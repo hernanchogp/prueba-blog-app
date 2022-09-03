@@ -15,7 +15,7 @@ const PostHome = props => {
                 <div className='card-footer'>
 
                     <div className='text-left'>
-                        <i className="fa-regular fa-thumbs-up"></i> {props.data.likes + '  '}
+                        <i className="fa-regular fa-thumbs-up text-primary"></i> {props.data.likes + '  '}
                         {props.data.tags.length === 0 ? (
                             <div>Loading...</div>
                         ) : (
@@ -34,7 +34,9 @@ const PostHome = props => {
 
 const Tags = props => {
     return (
-        <span className="badge bg-info ">{props.tag + ' '}</span>
+        
+            <span className="badge bg-info px-2 py-1 border mr-1 mb-1">{props.tag + ' '}</span>
+        
 
 
     )

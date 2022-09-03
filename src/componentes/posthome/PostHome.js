@@ -8,14 +8,15 @@ const PostHome = props => {
                 <div className="card-body ">
                     <h5 className="card-title">{props.data.owner.firstName + ' ' + props.data.owner.lastName}</h5>
                     <p className="card-text">
-                        <span className="small">{props.data.text}</span>
+                        <span className="small font-weight-light">{props.data.text}</span>
                     </p>
                 </div>
                 <div className='card-footer'>
                   
-                    <span><i className="fa-regular fa-thumbs-up"></i> {props.data.likes}</span>
-
-                      
+                    <div className='text-left'>
+                    <i className="fa-regular fa-thumbs-up"></i> {props.data.likes} <span className='font-italic small'>{props.data.tags + ' '} </span>
+                    </div>
+                
                 </div>
             </div>
         </div>

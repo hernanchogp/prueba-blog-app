@@ -36,7 +36,7 @@ const PostPublicaciones = props => {
 
     return (
         <div className="card mb-3" data-bs-toggle="tooltip" data-bs-placement="right" title={props.data.text}>
-            <div className="row no-gutters">
+            <div className="row ">
                 <div className="col-md-4">
                     <img src={props.data.image} className="card-img ImgSize" alt="..." />
                 </div>
@@ -45,11 +45,13 @@ const PostPublicaciones = props => {
                         <p className="chip bg-light">
                             <img src={props.data.owner.picture} alt="Person" width="96" height="96" />
                             {props.data.owner.firstName + ' ' + props.data.owner.lastName}
+
                         </p>
-                     
+
                         <p className="card-text">
                             {props.data.text}
                         </p>
+
                         <p className="card-text">
                             {props.data.tags.length === 0 ? (
                                 <div>Loading...</div>
@@ -59,6 +61,14 @@ const PostPublicaciones = props => {
                                 })
                             )}
                         </p>
+                    </div>
+                    <div className='card-footer'>
+                        <div className="row">
+                            <div className="col-8">
+                                <i className="fa-regular fa-thumbs-up text-primary"></i> {props.data.likes + '  '}
+                            </div>
+                            <div className="col-4">{FormatearFecha(new Date(props.data.publishDate))}</div>
+                        </div>
                     </div>
                 </div>
             </div>

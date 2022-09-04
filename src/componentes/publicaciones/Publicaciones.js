@@ -5,17 +5,24 @@ import Select from 'react-select';
 
 import { AllPost } from "../../services/Post";
 import { PostPublicaciones } from "../posthome/PostHome";
+import { TagsAPI } from "../../services/Tags";
 class Publicaciones extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      setPost: ''
+      setPost: '',
+      setTags: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+  }
+  handleChange (e) {
+    console.log(e.value)
   }
   componentDidMount() {
 
     this.traerPublicaciones()
+    this.traerTags()
 
   }
   async traerPublicaciones() {
@@ -24,15 +31,23 @@ class Publicaciones extends React.Component {
     this.setState({ setPost: data.data })
   }
 
+  async traerTags() {
+    const res = TagsAPI();
+    const { data } = await res;
+    let TagOpciones = [];
+    data.data.map((valor, i) => {
+      if (valor != '' && valor != null)
+        TagOpciones.push({
+          value: valor,
+          label: valor
+        });
+    })
+
+    this.setState({ setTags: TagOpciones })
+  }
+
 
   render() {
-
-    const options = [
-      { value: 'test', label: 'test' },
-      { value: 'test1', label: 'test1' },
-      { value: 'test2', label: 'test2' }
-    ]
-    console.log(this.state.setPost)
     return (
       <>
         <Nav />
@@ -51,7 +66,7 @@ class Publicaciones extends React.Component {
                         <div className="card-header"><i className="fas fa-search"></i> Filtrar post por Tag</div>
                         <div className="card-body">
 
-                          <Select options={options} />
+                          <Select options={this.state.setTags}  onChange={(e) => this.handleChange(e)}/>
                         </div>
 
                       </div>
@@ -60,7 +75,7 @@ class Publicaciones extends React.Component {
                     </div>
                     <div className="col-md-9 col ">
                       <div className="card bg-light mb-3">
-                        <div className="card-header"><i class="fa-solid fa-signs-post"></i> Post Registrados</div>
+                        <div className="card-header"><i className="fa-solid fa-signs-post"></i> Post Registrados</div>
                         <div className="card-body">
                           {this.state.setPost.length === 0 ? (
                             <div>Loading...</div>

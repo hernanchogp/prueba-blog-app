@@ -13,13 +13,16 @@ class Publicaciones extends React.Component {
     super(props)
     this.state = {
       setPost: '',
-      setTags: ''
+      setTags: '',
+      setTag:''
     }
     this.handleChange = this.handleChange.bind(this)
   }
   handleChange (e) {
-    console.log(e.value)
+   
+    //console.log(newWord.trim())
     this.consultarPostxTag(e.value.trim());
+    this.setState({ setTag: e.value.trim() })
   }
   componentDidMount() {
 
@@ -45,11 +48,15 @@ class Publicaciones extends React.Component {
     const { data } = await res;
     let TagOpciones = [];
     data.data.map((valor, i) => {
-      if (valor != '' && valor != null)
-        TagOpciones.push({
-          value: valor,
-          label: valor
-        });
+      if (valor != '' && valor != null){
+      var valorLimpio = valor.replace(/[.#,┤├:"'!*+\-?^${}()|[\]\\]/g,'')
+        if (valorLimpio != '' && valorLimpio != null)
+      
+          TagOpciones.push({
+            value: valorLimpio,
+            label: valorLimpio
+          });
+      }
     })
 
     this.setState({ setTags: TagOpciones })
@@ -83,7 +90,12 @@ class Publicaciones extends React.Component {
                         <div className="card-header"><i className="fa-solid fa-signs-post"></i> Post Registrados</div>
                         <div className="card-body">
                           {this.state.setPost.length === 0 ? (
-                            <div>No existen post con el tag seleccionado</div>
+                            <div className="alert alert-warning d-flex align-items-center" role="alert">
+                            
+                            <div>
+                              No existen post con el tag {this.state.setTag}
+                            </div>
+                          </div>
                           ) : (
                             this.state.setPost.map((e, i) => {
                               return <PostPublicaciones data={e} key={i} />;

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/prueba-blog-app/static/css/main.f2a8a3bc.css",
-    "main.js": "/prueba-blog-app/static/js/main.feed8f4d.js",
+    "main.js": "/prueba-blog-app/static/js/main.44cd7d55.js",
     "static/js/787.b13fdd03.chunk.js": "/prueba-blog-app/static/js/787.b13fdd03.chunk.js",
     "static/media/fa-solid-900.ttf": "/prueba-blog-app/static/media/fa-solid-900.b48ad290d0335879a92b.ttf",
     "static/media/fa-brands-400.ttf": "/prueba-blog-app/static/media/fa-brands-400.f9ee61fab3c11e2f3ed3.ttf",
@@ -13,11 +13,11 @@
     "static/media/fa-v4compatibility.woff2": "/prueba-blog-app/static/media/fa-v4compatibility.745989aab0d69cab7e70.woff2",
     "index.html": "/prueba-blog-app/index.html",
     "main.f2a8a3bc.css.map": "/prueba-blog-app/static/css/main.f2a8a3bc.css.map",
-    "main.feed8f4d.js.map": "/prueba-blog-app/static/js/main.feed8f4d.js.map",
+    "main.44cd7d55.js.map": "/prueba-blog-app/static/js/main.44cd7d55.js.map",
     "787.b13fdd03.chunk.js.map": "/prueba-blog-app/static/js/787.b13fdd03.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2a8a3bc.css",
-    "static/js/main.feed8f4d.js"
+    "static/js/main.44cd7d55.js"
   ]
 }

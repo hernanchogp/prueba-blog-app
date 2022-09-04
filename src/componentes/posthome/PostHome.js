@@ -35,19 +35,29 @@ const PostHome = props => {
 const PostPublicaciones = props => {
 
     return (
-        <div className="card mb-3"  data-bs-toggle="tooltip" data-bs-placement="right" title={props.data.text}>
+        <div className="card mb-3" data-bs-toggle="tooltip" data-bs-placement="right" title={props.data.text}>
             <div className="row no-gutters">
                 <div className="col-md-4">
                     <img src={props.data.image} className="card-img ImgSize" alt="..." />
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">
-                        <h5 className="card-title">{props.data.owner.firstName + ' ' + props.data.owner.lastName}</h5>
+                        <p className="chip bg-light">
+                            <img src={props.data.owner.picture} alt="Person" width="96" height="96" />
+                            {props.data.owner.firstName + ' ' + props.data.owner.lastName}
+                        </p>
+                     
                         <p className="card-text">
                             {props.data.text}
                         </p>
                         <p className="card-text">
-                            <small className="text-muted">Last updated 3 mins ago</small>
+                            {props.data.tags.length === 0 ? (
+                                <div>Loading...</div>
+                            ) : (
+                                props.data.tags.map((e, i) => {
+                                    return <Tags tag={e} key={i} />
+                                })
+                            )}
                         </p>
                     </div>
                 </div>
@@ -90,7 +100,7 @@ function FormatearFecha(date) {
     );
 }
 
-export{
+export {
     PostHome,
     PostPublicaciones
 }

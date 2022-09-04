@@ -3,7 +3,8 @@ import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
 import Select from 'react-select';
 
-import { AllPost } from "../../services/Post";
+import { AllPost, PostxTag } from "../../services/Post";
+
 import { PostPublicaciones } from "../posthome/PostHome";
 import { TagsAPI } from "../../services/Tags";
 class Publicaciones extends React.Component {
@@ -18,6 +19,7 @@ class Publicaciones extends React.Component {
   }
   handleChange (e) {
     console.log(e.value)
+    this.consultarPostxTag(e.value.trim());
   }
   componentDidMount() {
 
@@ -28,6 +30,13 @@ class Publicaciones extends React.Component {
   async traerPublicaciones() {
     const res = AllPost();
     const { data } = await res;
+    this.setState({ setPost: data.data })
+  }
+
+  async consultarPostxTag(tag) {
+    const res = PostxTag(tag);
+    const { data } = await res;
+    console.log(data)
     this.setState({ setPost: data.data })
   }
 
@@ -65,20 +74,16 @@ class Publicaciones extends React.Component {
                       <div className="card bg-light mb-3">
                         <div className="card-header"><i className="fas fa-search"></i> Filtrar post por Tag</div>
                         <div className="card-body">
-
                           <Select options={this.state.setTags}  onChange={(e) => this.handleChange(e)}/>
                         </div>
-
                       </div>
-
-
                     </div>
                     <div className="col-md-9 col ">
                       <div className="card bg-light mb-3">
                         <div className="card-header"><i className="fa-solid fa-signs-post"></i> Post Registrados</div>
                         <div className="card-body">
                           {this.state.setPost.length === 0 ? (
-                            <div>Loading...</div>
+                            <div>No existen post con el tag seleccionado</div>
                           ) : (
                             this.state.setPost.map((e, i) => {
                               return <PostPublicaciones data={e} key={i} />;
@@ -87,8 +92,6 @@ class Publicaciones extends React.Component {
                         </div>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
               </div>

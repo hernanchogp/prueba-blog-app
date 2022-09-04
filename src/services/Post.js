@@ -20,7 +20,7 @@ const postInicial = () => {
 
 const AllPost = () => {
     try {
-        const peticion = axios.get(process.env.REACT_APP_API_URL + 'post?limit=15',
+        const peticion = axios.get(process.env.REACT_APP_API_URL + 'post?limit='+process.env.REACT_APP_CANT_LISTAR,
             {
                 headers: {
                     'app-id': process.env.REACT_APP_API_KEY
@@ -37,7 +37,7 @@ const AllPost = () => {
 
 const PostxTag = (tag) => {
     try {
-        const peticion = axios.get(process.env.REACT_APP_API_URL + 'tag/' + tag + '/post?limit=15',
+        const peticion = axios.get(process.env.REACT_APP_API_URL + 'tag/' + tag + '/post?limit='+process.env.REACT_APP_CANT_LISTAR,
             {
                 headers: {
                     'app-id': process.env.REACT_APP_API_KEY

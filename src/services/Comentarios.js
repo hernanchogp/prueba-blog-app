@@ -4,7 +4,7 @@ const ComentariosPost = async (postid,state) => {
    
     try {
         
-        const peticion = await axios.get(process.env.REACT_APP_API_URL + 'post/' + postid + '/comment?limit=10',
+        const peticion = await axios.get(process.env.REACT_APP_API_URL + 'post/' + postid + '/comment?limit='+process.env.REACT_APP_CANT_LISTAR,
             {
                 headers: {
                     'app-id': process.env.REACT_APP_API_KEY

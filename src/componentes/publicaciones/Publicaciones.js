@@ -58,7 +58,6 @@ class Publicaciones extends React.Component {
     this.setState({ setTags: TagOpciones })
   }
 
-
   render() {
     return (
       <>
@@ -101,6 +100,8 @@ class Publicaciones extends React.Component {
                     </div>
                   </div>
                 </div>
+
+               
               </div>
             </div>
 
@@ -111,4 +112,5 @@ class Publicaciones extends React.Component {
     )
   }
 }
+
 export default Publicaciones;

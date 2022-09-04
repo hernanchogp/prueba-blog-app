@@ -44,3 +44,7 @@ code {
   width: 40px;
   border-radius: 50%;
 }
+
+a:link {
+  text-decoration: none !important;
+}

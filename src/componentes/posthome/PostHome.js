@@ -32,11 +32,37 @@ const PostHome = props => {
     );
 }
 
+const PostPublicaciones = props => {
+
+    return (
+        <div className="card mb-3"  data-bs-toggle="tooltip" data-bs-placement="right" title={props.data.text}>
+            <div className="row no-gutters">
+                <div className="col-md-4">
+                    <img src={props.data.image} className="card-img ImgSize" alt="..." />
+                </div>
+                <div className="col-md-8">
+                    <div className="card-body">
+                        <h5 className="card-title">{props.data.owner.firstName + ' ' + props.data.owner.lastName}</h5>
+                        <p className="card-text">
+                            {props.data.text}
+                        </p>
+                        <p className="card-text">
+                            <small className="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    );
+}
+
 const Tags = props => {
     return (
-        
-            <span className="badge bg-info px-2 py-1 border mr-1 mb-1">{props.tag + ' '}</span>
-        
+
+        <span className="badge bg-info px-2 py-1 border mr-1 mb-1">{props.tag + ' '}</span>
+
 
 
     )
@@ -64,4 +90,7 @@ function FormatearFecha(date) {
     );
 }
 
-export default PostHome;
+export{
+    PostHome,
+    PostPublicaciones
+}

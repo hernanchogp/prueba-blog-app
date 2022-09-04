@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
 import { postInicial } from "../../services/Post";
-import PostHome from "../posthome/PostHome";
+import {PostHome} from "../posthome/PostHome";
 
 class Home extends React.Component {
 

@@ -1,14 +1,42 @@
 import React from "react";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
+import Select from 'react-select';
 
+import { AllPost } from "../../services/Post";
+import { PostPublicaciones } from "../posthome/PostHome";
 class Publicaciones extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      setPost: ''
+    }
+  }
+  componentDidMount() {
+
+    this.traerPublicaciones()
+
+  }
+  async traerPublicaciones() {
+    const res = AllPost();
+    const { data } = await res;
+    this.setState({ setPost: data.data })
+  }
+
+
   render() {
 
+    const options = [
+      { value: 'test', label: 'test' },
+      { value: 'test1', label: 'test1' },
+      { value: 'test2', label: 'test2' }
+    ]
+    console.log(this.state.setPost)
     return (
       <>
         <Nav />
-        <main role="main" className="flex-shrink-0 mt-2">
+        <main role="main" className="flex-shrink-0 mt-3">
 
           <div className="container-fluid">
             <div className='card border-secondary border rounded border-1 border-light'>
@@ -16,6 +44,38 @@ class Publicaciones extends React.Component {
                 Post del Sistema dummyapi.io
               </div>
               <div className='card-body'>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-3 col">
+                      <div className="card bg-light mb-3">
+                        <div className="card-header"><i className="fas fa-search"></i> Filtrar post por Tag</div>
+                        <div className="card-body">
+
+                          <Select options={options} />
+                        </div>
+
+                      </div>
+
+
+                    </div>
+                    <div className="col-md-9 col ">
+                      <div className="card bg-light mb-3">
+                        <div className="card-header"><i class="fa-solid fa-signs-post"></i> Post Registrados</div>
+                        <div className="card-body">
+                          {this.state.setPost.length === 0 ? (
+                            <div>Loading...</div>
+                          ) : (
+                            this.state.setPost.map((e, i) => {
+                              return <PostPublicaciones data={e} key={i} />;
+                            })
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
               </div>
             </div>
 

@@ -26,7 +26,6 @@ const AllPost = () => {
 }
 
 const PostxTag = (tag) => {
-    console.log(process.env.REACT_APP_API_URL +'tag/'+tag+'/post?limit=15')
     const peticion = axios.get(process.env.REACT_APP_API_URL +'tag/'+tag+'/post?limit=15',
         {
             headers: {

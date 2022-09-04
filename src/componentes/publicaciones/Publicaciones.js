@@ -14,13 +14,11 @@ class Publicaciones extends React.Component {
     this.state = {
       setPost: '',
       setTags: '',
-      setTag:''
+      setTag: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
-  handleChange (e) {
-   
-    //console.log(newWord.trim())
+  handleChange(e) {
     this.consultarPostxTag(e.value.trim());
     this.setState({ setTag: e.value.trim() })
   }
@@ -39,7 +37,6 @@ class Publicaciones extends React.Component {
   async consultarPostxTag(tag) {
     const res = PostxTag(tag);
     const { data } = await res;
-    console.log(data)
     this.setState({ setPost: data.data })
   }
 
@@ -48,10 +45,9 @@ class Publicaciones extends React.Component {
     const { data } = await res;
     let TagOpciones = [];
     data.data.map((valor, i) => {
-      if (valor != '' && valor != null){
-      var valorLimpio = valor.replace(/[.#,┤├:"'!*+\-?^${}()|[\]\\]/g,'')
-        if (valorLimpio != '' && valorLimpio != null)
-      
+      if (valor !== '' && valor !== null) {
+        var valorLimpio = valor.replace(/[.#,┤├:"'!*+\-?^${}()|[\]\\]/g, '')
+        if (valorLimpio !== '' && valorLimpio !== null)
           TagOpciones.push({
             value: valorLimpio,
             label: valorLimpio
@@ -68,7 +64,6 @@ class Publicaciones extends React.Component {
       <>
         <Nav />
         <main role="main" className="flex-shrink-0 mt-3">
-
           <div className="container-fluid">
             <div className='card border-secondary border rounded border-1 border-light'>
               <div className='card-header text-dark bg-light '>
@@ -81,7 +76,7 @@ class Publicaciones extends React.Component {
                       <div className="card bg-light mb-3">
                         <div className="card-header"><i className="fas fa-search"></i> Filtrar post por Tag</div>
                         <div className="card-body">
-                          <Select options={this.state.setTags}  onChange={(e) => this.handleChange(e)}/>
+                          <Select options={this.state.setTags} onChange={(e) => this.handleChange(e)} />
                         </div>
                       </div>
                     </div>
@@ -91,11 +86,11 @@ class Publicaciones extends React.Component {
                         <div className="card-body">
                           {this.state.setPost.length === 0 ? (
                             <div className="alert alert-warning d-flex align-items-center" role="alert">
-                            
-                            <div>
-                              No existen post con el tag {this.state.setTag}
+
+                              <div>
+                                No existen post con el tag {this.state.setTag}
+                              </div>
                             </div>
-                          </div>
                           ) : (
                             this.state.setPost.map((e, i) => {
                               return <PostPublicaciones data={e} key={i} />;

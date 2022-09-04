@@ -2,7 +2,7 @@
   "homepage": "https://hernanchogp.github.io/prueba-blog-app",
   "name": "blog-app",
   "version": "0.1.0",
-  "private": true,
+  "private": true,  
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build && echo hernanchogp.github.io/prueba-blog-app > ./build/CNAME",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
